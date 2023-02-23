@@ -10,9 +10,7 @@ const PORT  = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
-app.all('*', (req,res) => {
-    res.json({"every thing":"is awesome"})
-})
+
 
 app.get('/',(req,res)=>{
     res.status(200).send('Welcome')
@@ -21,7 +19,9 @@ app.use('/api',userRouter)
 app.use('/api/flights',flightRouter)
 app.use('/api/booking',bookingRouter)
 app.use('/api/dashboard',bookingRouter)
-
+app.all('*', (req,res) => {
+    res.json({"every thing":"is awesome"})
+})
 app.listen(PORT,async()=>{
     console.log(`Listening on http://localhost:${PORT}`)
     try {
