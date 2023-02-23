@@ -6,10 +6,13 @@ const cors = require('cors');
 const { userRouter } = require('./Routes/user.routes');
 const { flightRouter } = require('./Routes/flight.routes');
 const { bookingRouter } = require('./Routes/booking.routes');
-const PORT  = process.env.PORT
+const PORT  = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
+app.all('*', (req,res) => {
+    res.json({"every thing":"is awesome"})
+})
 
 app.get('/',(req,res)=>{
     res.status(200).send('Welcome')
